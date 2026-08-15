@@ -88,7 +88,7 @@ export function Navbar() {
               Jobs Board
             </Button>
           </Link>
-          <Link href="/saved">
+          <Link href="/saved" className="hidden sm:block">
             <Button variant="ghost" size="icon" className="text-muted-foreground hover:text-foreground rounded-full">
               <Heart className="w-5 h-5" />
             </Button>
@@ -96,8 +96,7 @@ export function Navbar() {
           <Link href="/jobs/new">
             <Button className="rounded-full shadow-sm">
               <PlusCircle className="w-4 h-4 mr-2" />
-              <span className="hidden sm:inline">Post a Job</span>
-              <span className="sm:hidden">Post</span>
+              <span>Post a Job</span>
             </Button>
           </Link>
         </nav>
