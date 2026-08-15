@@ -45,7 +45,7 @@ export function Navbar() {
                 <div className="space-y-2">
                   <Select value={countryId?.toString() || ''} onValueChange={(val) => { setCountryId(Number(val)); setCityId(null); setCommunityId(null); }}>
                     <SelectTrigger><SelectValue placeholder="Select Country" /></SelectTrigger>
-                    <SelectContent>
+                    <SelectContent position="popper">
                       {meta?.countries.map(c => (
                         <SelectItem key={c.id} value={c.id.toString()}>{c.flagEmoji} {c.name}</SelectItem>
                       ))}
@@ -54,7 +54,7 @@ export function Navbar() {
 
                   <Select disabled={!countryId} value={cityId?.toString() || ''} onValueChange={(val) => { setCityId(Number(val)); setCommunityId(null); }}>
                     <SelectTrigger><SelectValue placeholder="Select City/Region" /></SelectTrigger>
-                    <SelectContent>
+                    <SelectContent position="popper">
                       {activeCountry?.cities.map(c => (
                         <SelectItem key={c.id} value={c.id.toString()}>{c.name}</SelectItem>
                       ))}
@@ -63,7 +63,7 @@ export function Navbar() {
 
                   <Select disabled={!cityId} value={communityId?.toString() || ''} onValueChange={(val) => setCommunityId(Number(val))}>
                     <SelectTrigger><SelectValue placeholder="Select Community" /></SelectTrigger>
-                    <SelectContent>
+                    <SelectContent position="popper">
                       {activeCity?.communities.map(c => (
                         <SelectItem key={c.id} value={c.id.toString()}>{c.name}</SelectItem>
                       ))}

@@ -106,7 +106,7 @@ export default function PostJob() {
                       <FormControl>
                         <SelectTrigger><SelectValue placeholder="Select service category" /></SelectTrigger>
                       </FormControl>
-                      <SelectContent>
+                      <SelectContent position="popper">
                         {meta?.categories.map(c => (
                           <SelectItem key={c.id} value={c.id.toString()}>{c.name}</SelectItem>
                         ))}
@@ -123,7 +123,7 @@ export default function PostJob() {
                       <FormControl>
                         <SelectTrigger><SelectValue placeholder="Select community" /></SelectTrigger>
                       </FormControl>
-                      <SelectContent>
+                      <SelectContent position="popper">
                         {activeCity?.communities.map(c => (
                           <SelectItem key={c.id} value={c.id.toString()}>{c.name}</SelectItem>
                         )) || <SelectItem value="0" disabled>Select a city first in nav</SelectItem>}
@@ -220,7 +220,7 @@ export default function PostJob() {
                       <FormControl>
                         <SelectTrigger><SelectValue /></SelectTrigger>
                       </FormControl>
-                      <SelectContent>
+                      <SelectContent position="popper">
                         <SelectItem value="flexible">Flexible</SelectItem>
                         <SelectItem value="soon">Within a week</SelectItem>
                         <SelectItem value="urgent">As soon as possible</SelectItem>

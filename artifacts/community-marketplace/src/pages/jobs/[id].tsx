@@ -296,7 +296,7 @@ function ProviderInterestDialog({ jobId, communityId }: { jobId: number, communi
             <Label>Simulate Provider</Label>
             <Select value={providerId?.toString() ?? ""} onValueChange={(val) => setProviderId(Number(val))}>
               <SelectTrigger><SelectValue placeholder="Select a local provider" /></SelectTrigger>
-              <SelectContent>
+              <SelectContent position="popper">
                 {providers?.map(p => (
                   <SelectItem key={p.id} value={p.id.toString()}>{p.businessName} ({p.avgRating.toFixed(1)}★)</SelectItem>
                 ))}

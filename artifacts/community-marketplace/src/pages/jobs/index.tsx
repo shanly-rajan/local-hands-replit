@@ -71,7 +71,7 @@ export default function JobsList() {
                 <Label>Category</Label>
                 <Select value={categoryId?.toString() || 'all'} onValueChange={(val) => setCategoryId(val === 'all' ? undefined : Number(val))}>
                   <SelectTrigger><SelectValue placeholder="All Categories" /></SelectTrigger>
-                  <SelectContent>
+                  <SelectContent position="popper">
                     <SelectItem value="all">All Categories</SelectItem>
                     {meta?.categories.map(c => (
                       <SelectItem key={c.id} value={c.id.toString()}>{c.name}</SelectItem>
@@ -84,7 +84,7 @@ export default function JobsList() {
                 <Label>Status</Label>
                 <Select value={status} onValueChange={setStatus}>
                   <SelectTrigger><SelectValue /></SelectTrigger>
-                  <SelectContent>
+                  <SelectContent position="popper">
                     <SelectItem value="all">All Statuses</SelectItem>
                     <SelectItem value="open">Open (Seeking Providers)</SelectItem>
                     <SelectItem value="providers_interested">Providers Interested</SelectItem>
