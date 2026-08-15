@@ -1,0 +1,15 @@
+uploads = []
+generated = []
+
+[[outputs]]
+id = "vxSfeJq5zhsde15FiriEl"
+uri = "file://.local/outputs/Local-Hands---Pitch-Deck.pdf"
+type = "pdf"
+title = "Local Hands — Pitch Deck.pdf"
+
+[[outputs]]
+id = "SFqDXBI0VSHGQ4JFCg82j"
+uri = "file://.local/outputs/Local-Hands-Pitch-Deck.pdf"
+type = "pdf"
+title = "Local Hands — Pitch Deck (PDF)"
+description = "12-slide pitch deck export for Local Hands community services marketplace."
