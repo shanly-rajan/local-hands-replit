@@ -50,10 +50,12 @@ export default function PostJob() {
     defaultValues: {
       title: "",
       description: "",
-      categoryId: undefined,
-      communityId: communityId || undefined,
-      budgetType: "open",
-      urgency: "flexible",
+      categoryId: 0,
+      communityId: communityId || 0,
+      budgetType: "open" as const,
+      budgetMin: undefined,
+      budgetMax: undefined,
+      urgency: "flexible" as const,
       preferredDate: ""
     }
   });
@@ -100,7 +102,7 @@ export default function PostJob() {
                 <FormField control={form.control} name="categoryId" render={({ field }) => (
                   <FormItem>
                     <FormLabel>Category</FormLabel>
-                    <Select onValueChange={field.onChange} defaultValue={field.value?.toString()}>
+                    <Select value={field.value ? field.value.toString() : ""} onValueChange={field.onChange}>
                       <FormControl>
                         <SelectTrigger><SelectValue placeholder="Select service category" /></SelectTrigger>
                       </FormControl>
@@ -117,7 +119,7 @@ export default function PostJob() {
                 <FormField control={form.control} name="communityId" render={({ field }) => (
                   <FormItem>
                     <FormLabel>Location</FormLabel>
-                    <Select onValueChange={field.onChange} defaultValue={field.value?.toString()}>
+                    <Select value={field.value ? field.value.toString() : ""} onValueChange={field.onChange}>
                       <FormControl>
                         <SelectTrigger><SelectValue placeholder="Select community" /></SelectTrigger>
                       </FormControl>
@@ -214,7 +216,7 @@ export default function PostJob() {
                 <FormField control={form.control} name="urgency" render={({ field }) => (
                   <FormItem>
                     <FormLabel>Urgency</FormLabel>
-                    <Select onValueChange={field.onChange} defaultValue={field.value}>
+                    <Select value={field.value ?? "flexible"} onValueChange={field.onChange}>
                       <FormControl>
                         <SelectTrigger><SelectValue /></SelectTrigger>
                       </FormControl>
