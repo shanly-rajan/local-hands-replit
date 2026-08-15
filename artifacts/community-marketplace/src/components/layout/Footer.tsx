@@ -14,7 +14,7 @@ export function Footer() {
             The customer has choice. The provider has opportunity. The community creates trust.
           </p>
         </div>
-        
+
         <div>
           <h4 className="font-bold mb-4 font-display">Marketplace</h4>
           <ul className="space-y-2 text-sm text-secondary-foreground/80">
@@ -22,25 +22,26 @@ export function Footer() {
             <li><Link href="/jobs" className="hover:text-primary transition-colors">Community Jobs</Link></li>
             <li><Link href="/jobs/new" className="hover:text-primary transition-colors">Post a Job</Link></li>
             <li><Link href="/ads" className="hover:text-primary transition-colors">Community Ads</Link></li>
+            <li><Link href="/saved" className="hover:text-primary transition-colors">Saved Providers</Link></li>
           </ul>
         </div>
 
         <div>
-          <h4 className="font-bold mb-4 font-display">Support</h4>
+          <h4 className="font-bold mb-4 font-display">Discover</h4>
           <ul className="space-y-2 text-sm text-secondary-foreground/80">
-            <li><Link href="#" className="hover:text-primary transition-colors">How it works</Link></li>
-            <li><Link href="#" className="hover:text-primary transition-colors">Trust & Safety</Link></li>
-            <li><Link href="#" className="hover:text-primary transition-colors">Verification Process</Link></li>
-            <li><Link href="#" className="hover:text-primary transition-colors">Contact Us</Link></li>
+            <li><Link href="/providers?sort=rating" className="hover:text-primary transition-colors">Top-Rated Providers</Link></li>
+            <li><Link href="/providers?sort=value" className="hover:text-primary transition-colors">Best Value Providers</Link></li>
+            <li><Link href="/providers?verifiedOnly=true" className="hover:text-primary transition-colors">Verified Providers</Link></li>
+            <li><Link href="/providers?sort=newest" className="hover:text-primary transition-colors">Newest Providers</Link></li>
           </ul>
         </div>
 
         <div>
-          <h4 className="font-bold mb-4 font-display">For Providers</h4>
+          <h4 className="font-bold mb-4 font-display">Jobs Board</h4>
           <ul className="space-y-2 text-sm text-secondary-foreground/80">
-            <li><Link href="#" className="hover:text-primary transition-colors">Join as a Provider</Link></li>
-            <li><Link href="#" className="hover:text-primary transition-colors">Success Stories</Link></li>
-            <li><Link href="#" className="hover:text-primary transition-colors">Community Guidelines</Link></li>
+            <li><Link href="/jobs?status=open" className="hover:text-primary transition-colors">Open Jobs</Link></li>
+            <li><Link href="/jobs?status=providers_interested" className="hover:text-primary transition-colors">Providers Interested</Link></li>
+            <li><Link href="/jobs/new" className="hover:text-primary transition-colors">Post a New Job</Link></li>
           </ul>
         </div>
       </div>
