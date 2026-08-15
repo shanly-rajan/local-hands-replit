@@ -1,5 +1,5 @@
 import { Link } from 'wouter';
-import { Heart } from 'lucide-react';
+import { Heart, Home } from 'lucide-react';
 
 export function Footer() {
   return (
@@ -7,7 +7,9 @@ export function Footer() {
       <div className="container mx-auto px-4 grid grid-cols-1 md:grid-cols-4 gap-8">
         <div className="md:col-span-1">
           <Link href="/" className="flex items-center gap-2 mb-4">
-            <Heart className="w-6 h-6 text-primary fill-primary" />
+            <div className="bg-primary text-primary-foreground p-1.5 rounded-lg">
+              <Home className="w-4 h-4" />
+            </div>
             <span className="font-display font-bold text-xl">NeighbourWorks</span>
           </Link>
           <p className="text-secondary-foreground/70 text-sm">

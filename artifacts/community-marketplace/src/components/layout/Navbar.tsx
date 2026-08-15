@@ -2,7 +2,7 @@ import { ReactNode } from 'react';
 import { Link } from 'wouter';
 import { useLocationContext } from '@/context/LocationContext';
 import { useGetMeta } from '@workspace/api-client-react';
-import { MapPin, Search, PlusCircle, Heart, Briefcase, ChevronDown } from 'lucide-react';
+import { MapPin, Search, PlusCircle, Heart, Briefcase, ChevronDown, Home } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Popover, PopoverContent, PopoverTrigger } from '@/components/ui/popover';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
@@ -23,7 +23,7 @@ export function Navbar() {
       <div className="container mx-auto px-4 h-16 flex items-center justify-between gap-4">
         <Link href="/" className="flex items-center gap-2 group">
           <div className="bg-primary text-primary-foreground p-2 rounded-xl group-hover:scale-105 transition-transform">
-            <Heart className="w-5 h-5 fill-current" />
+            <Home className="w-5 h-5" />
           </div>
           <span className="font-display font-bold text-xl tracking-tight hidden sm:inline-block">
             NeighbourWorks
