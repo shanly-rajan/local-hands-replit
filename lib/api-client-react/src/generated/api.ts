@@ -23,6 +23,7 @@ import type {
   Advertisement,
   ApiMessage,
   FavoriteInput,
+  GetHomeSummaryParams,
   HealthStatus,
   HomeSummary,
   JobDetail,
@@ -223,20 +224,27 @@ export function useGetMeta<TData = Awaited<ReturnType<typeof getMeta>>, TError =
 
 
 
-export const getGetHomeSummaryUrl = () => {
+export const getGetHomeSummaryUrl = (params?: GetHomeSummaryParams,) => {
+  const normalizedParams = new URLSearchParams();
 
+  Object.entries(params || {}).forEach(([key, value]) => {
 
+    if (value !== undefined) {
+      normalizedParams.append(key, value === null ? 'null' : String(value))
+    }
+  });
 
+  const stringifiedParams = normalizedParams.toString();
 
-  return `/api/home`
+  return stringifiedParams.length > 0 ? `/api/home?${stringifiedParams}` : `/api/home`
 }
 
 /**
  * @summary Homepage summary content
  */
-export const getHomeSummary = async ( options?: Parameters<typeof customFetch>[1]): Promise<HomeSummary> => {
+export const getHomeSummary = async (params?: GetHomeSummaryParams, options?: Parameters<typeof customFetch>[1]): Promise<HomeSummary> => {
 
-  return customFetch<HomeSummary>(getGetHomeSummaryUrl(),
+  return customFetch<HomeSummary>(getGetHomeSummaryUrl(params),
   {
     ...options,
     method: 'GET'
@@ -249,23 +257,23 @@ export const getHomeSummary = async ( options?: Parameters<typeof customFetch>[1
 
 
 
-export const getGetHomeSummaryQueryKey = () => {
+export const getGetHomeSummaryQueryKey = (params?: GetHomeSummaryParams,) => {
     return [
-    `/api/home`
+    `/api/home`, ...(params ? [params] : [])
     ] as const;
     }
 
 
-export const getGetHomeSummaryQueryOptions = <TData = Awaited<ReturnType<typeof getHomeSummary>>, TError = ErrorType<unknown>>( options?: { query?:UseQueryOptions<Awaited<ReturnType<typeof getHomeSummary>>, TError, TData>, request?: SecondParameter<typeof customFetch>}
+export const getGetHomeSummaryQueryOptions = <TData = Awaited<ReturnType<typeof getHomeSummary>>, TError = ErrorType<unknown>>(params?: GetHomeSummaryParams, options?: { query?:UseQueryOptions<Awaited<ReturnType<typeof getHomeSummary>>, TError, TData>, request?: SecondParameter<typeof customFetch>}
 ) => {
 
 const {query: queryOptions, request: requestOptions} = options ?? {};
 
-  const queryKey =  queryOptions?.queryKey ?? getGetHomeSummaryQueryKey();
+  const queryKey =  queryOptions?.queryKey ?? getGetHomeSummaryQueryKey(params);
 
 
 
-    const queryFn: QueryFunction<Awaited<ReturnType<typeof getHomeSummary>>> = ({ signal }) => getHomeSummary({ signal, ...requestOptions });
+    const queryFn: QueryFunction<Awaited<ReturnType<typeof getHomeSummary>>> = ({ signal }) => getHomeSummary(params, { signal, ...requestOptions });
 
 
 
@@ -283,11 +291,11 @@ export type GetHomeSummaryQueryError = ErrorType<unknown>
  */
 
 export function useGetHomeSummary<TData = Awaited<ReturnType<typeof getHomeSummary>>, TError = ErrorType<unknown>>(
-  options?: { query?:UseQueryOptions<Awaited<ReturnType<typeof getHomeSummary>>, TError, TData>, request?: SecondParameter<typeof customFetch>}
+ params?: GetHomeSummaryParams, options?: { query?:UseQueryOptions<Awaited<ReturnType<typeof getHomeSummary>>, TError, TData>, request?: SecondParameter<typeof customFetch>}
 
  ):  UseQueryResult<TData, TError> & { queryKey: QueryKey } {
 
-  const queryOptions = getGetHomeSummaryQueryOptions(options)
+  const queryOptions = getGetHomeSummaryQueryOptions(params,options)
 
   const query = useQuery(queryOptions) as  UseQueryResult<TData, TError> & { queryKey: QueryKey };
 

@@ -12,6 +12,7 @@ export * from './city';
 export * from './community';
 export * from './country';
 export * from './favoriteInput';
+export * from './getHomeSummaryParams';
 export * from './healthStatus';
 export * from './homeSummary';
 export * from './jobDetail';

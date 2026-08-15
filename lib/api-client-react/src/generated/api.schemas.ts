@@ -359,6 +359,12 @@ export interface FavoriteInput {
   providerId: number;
 }
 
+export type GetHomeSummaryParams = {
+countryId?: number;
+cityId?: number;
+communityId?: number;
+};
+
 export type ListProvidersParams = {
 categoryId?: number;
 countryId?: number;

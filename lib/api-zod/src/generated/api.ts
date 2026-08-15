@@ -50,6 +50,12 @@ export const GetMetaResponse = zod.object({
 /**
  * @summary Homepage summary content
  */
+export const GetHomeSummaryQueryParams = zod.object({
+  "countryId": zod.coerce.number().int().optional(),
+  "cityId": zod.coerce.number().int().optional(),
+  "communityId": zod.coerce.number().int().optional()
+})
+
 export const GetHomeSummaryResponse = zod.object({
   "popularCategories": zod.array(zod.object({
   "id": zod.int(),

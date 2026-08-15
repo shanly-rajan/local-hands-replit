@@ -8,8 +8,12 @@ import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle }
 import { Badge } from '@/components/ui/badge';
 
 export default function Home() {
-  const { data: summary, isLoading, isError } = useGetHomeSummary();
-  const { currencySymbol } = useLocationContext();
+  const { countryId, cityId, communityId, currencySymbol } = useLocationContext();
+  const { data: summary, isLoading, isError } = useGetHomeSummary({
+    countryId: countryId ?? undefined,
+    cityId: cityId ?? undefined,
+    communityId: communityId ?? undefined,
+  });
 
   if (isLoading) {
     return (

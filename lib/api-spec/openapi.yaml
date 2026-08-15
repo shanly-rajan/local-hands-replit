@@ -45,6 +45,16 @@ paths:
       operationId: getHomeSummary
       tags: [meta]
       summary: Homepage summary content
+      parameters:
+        - name: countryId
+          in: query
+          schema: { type: integer }
+        - name: cityId
+          in: query
+          schema: { type: integer }
+        - name: communityId
+          in: query
+          schema: { type: integer }
       responses:
         "200":
           description: Home summary
