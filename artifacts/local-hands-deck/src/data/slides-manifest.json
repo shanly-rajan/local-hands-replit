@@ -1,0 +1,98 @@
+[
+  {
+    "id": "a0000001-0000-0000-0000-000000000001",
+    "position": 1,
+    "filepath": "src/pages/slides/Slide01Cover.tsx",
+    "title": "Local Hands",
+    "description": "Cover slide with hero image, title, and tagline",
+    "speakerNotes": ""
+  },
+  {
+    "id": "a0000001-0000-0000-0000-000000000002",
+    "position": 2,
+    "filepath": "src/pages/slides/Slide02Problem.tsx",
+    "title": "The problem",
+    "description": "Four core pain points with finding local services",
+    "speakerNotes": ""
+  },
+  {
+    "id": "a0000001-0000-0000-0000-000000000003",
+    "position": 3,
+    "filepath": "src/pages/slides/Slide03Solution.tsx",
+    "title": "The solution",
+    "description": "Local Hands two-sided marketplace impact statement",
+    "speakerNotes": ""
+  },
+  {
+    "id": "a0000001-0000-0000-0000-000000000004",
+    "position": 4,
+    "filepath": "src/pages/slides/Slide04HowItWorks.tsx",
+    "title": "How it works",
+    "description": "Three-step flow: post, respond, hire and review",
+    "speakerNotes": ""
+  },
+  {
+    "id": "a0000001-0000-0000-0000-000000000005",
+    "position": 5,
+    "filepath": "src/pages/slides/Slide05ForResidents.tsx",
+    "title": "For residents",
+    "description": "Four key benefits for residents using the platform",
+    "speakerNotes": ""
+  },
+  {
+    "id": "a0000001-0000-0000-0000-000000000006",
+    "position": 6,
+    "filepath": "src/pages/slides/Slide06ForProviders.tsx",
+    "title": "For service providers",
+    "description": "Four key benefits for service providers on the platform",
+    "speakerNotes": ""
+  },
+  {
+    "id": "a0000001-0000-0000-0000-000000000007",
+    "position": 7,
+    "filepath": "src/pages/slides/Slide07Trust.tsx",
+    "title": "Community trust built in",
+    "description": "Four trust features: verification, ratings, value score, location scope",
+    "speakerNotes": ""
+  },
+  {
+    "id": "a0000001-0000-0000-0000-000000000008",
+    "position": 8,
+    "filepath": "src/pages/slides/Slide08MultiMarket.tsx",
+    "title": "Multi-market from day one",
+    "description": "Three-country cards for South Africa, USA, and India",
+    "speakerNotes": ""
+  },
+  {
+    "id": "a0000001-0000-0000-0000-000000000009",
+    "position": 9,
+    "filepath": "src/pages/slides/Slide09TechStack.tsx",
+    "title": "Built on a modern stack",
+    "description": "Tech stack bullets alongside the architecture diagram",
+    "speakerNotes": ""
+  },
+  {
+    "id": "a0000001-0000-0000-0000-000000000010",
+    "position": 10,
+    "filepath": "src/pages/slides/Slide10WhereWeStand.tsx",
+    "title": "Where it stands today",
+    "description": "Current stats and feature highlights on dark navy background",
+    "speakerNotes": ""
+  },
+  {
+    "id": "a0000001-0000-0000-0000-000000000011",
+    "position": 11,
+    "filepath": "src/pages/slides/Slide11WhatComesNext.tsx",
+    "title": "What comes next",
+    "description": "Five numbered roadmap items",
+    "speakerNotes": ""
+  },
+  {
+    "id": "a0000001-0000-0000-0000-000000000012",
+    "position": 12,
+    "filepath": "src/pages/slides/Slide12Closing.tsx",
+    "title": "Try Local Hands",
+    "description": "Closing slide with live prototype URL on orange background",
+    "speakerNotes": ""
+  }
+]

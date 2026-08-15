@@ -1,0 +1,28 @@
+kind = "slides"
+previewPath = "/local-hands-deck/"
+title = "Local Hands — Pitch Deck"
+description = "12-slide demo deck for Local Hands, a two-sided community services marketplace connecting residents with trusted local service providers."
+version = "1.0.0"
+id = "artifacts/local-hands-deck"
+router = "path"
+
+[[services]]
+name = "web"
+paths = [ "/local-hands-deck/" ]
+localPort = 23420
+
+[services.development]
+run = "pnpm --filter @workspace/local-hands-deck run dev"
+
+[services.production]
+build = [ "pnpm", "--filter", "@workspace/local-hands-deck", "run", "build" ]
+serve = "static"
+publicDir = "artifacts/local-hands-deck/dist/public"
+
+[[services.production.rewrites]]
+from = "/*"
+to = "/index.html"
+
+[services.env]
+PORT = "23420"
+BASE_PATH = "/local-hands-deck/"
