@@ -30,7 +30,7 @@ export function Navbar() {
           </span>
         </Link>
 
-        <div className="flex-1 max-w-md hidden md:flex items-center gap-2">
+        <div className="flex-1 max-w-md flex items-center gap-2">
           <Popover>
             <PopoverTrigger asChild>
               <Button variant="outline" className="flex items-center gap-2 rounded-full border-dashed w-full justify-start text-muted-foreground hover:text-foreground">
