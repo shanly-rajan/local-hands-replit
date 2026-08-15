@@ -190,9 +190,9 @@ export default function Home() {
           <section className="space-y-6">
             <h3 className="text-sm font-bold text-muted-foreground uppercase tracking-wider">Community Sponsors</h3>
             <div className="grid md:grid-cols-2 gap-6">
-              {summary.ads.map(ad => (
-                <a key={ad.id} href={ad.linkUrl || '#'} target="_blank" rel="noreferrer" className="block group">
-                  <div className="relative rounded-2xl overflow-hidden aspect-[21/9] bg-muted">
+              {summary.ads.map(ad => {
+                const inner = (
+                  <div className="relative rounded-2xl overflow-hidden aspect-[21/9] bg-muted group">
                     <img src={ad.imageUrl} alt={ad.title} className="object-cover w-full h-full group-hover:scale-105 transition-transform duration-700" />
                     <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent flex flex-col justify-end p-6 text-white">
                       <Badge className="absolute top-4 right-4 bg-black/50 hover:bg-black/50 text-white backdrop-blur border-none">Sponsored</Badge>
@@ -200,8 +200,11 @@ export default function Home() {
                       <p className="text-white/80 text-sm mt-1">{ad.businessName} • {ad.targetArea}</p>
                     </div>
                   </div>
-                </a>
-              ))}
+                );
+                return ad.linkUrl
+                  ? <a key={ad.id} href={ad.linkUrl} target="_blank" rel="noreferrer" className="block">{inner}</a>
+                  : <Link key={ad.id} href="/ads" className="block">{inner}</Link>;
+              })}
             </div>
           </section>
         )}

@@ -147,7 +147,7 @@ export default function JobDetail() {
               <Badge variant="secondary" className="text-sm">{job.interestCount}</Badge>
             </div>
 
-            {job.status === 'open' && (
+            {['open', 'providers_interested'].includes(job.status) && (
               <ProviderInterestDialog jobId={id} communityId={communityId || undefined} />
             )}
 
@@ -220,7 +220,7 @@ export default function JobDetail() {
                         )}
                       </div>
 
-                      {job.status === 'open' && (
+                      {['open', 'providers_interested'].includes(job.status) && !job.selectedInterestId && (
                         <Button 
                           onClick={() => handleSelectWinner(interest.id)} 
                           className="w-full rounded-full"

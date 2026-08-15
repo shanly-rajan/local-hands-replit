@@ -84,9 +84,11 @@ export default function ProviderProfile() {
               </div>
             </div>
             <div className="flex gap-3 w-full md:w-auto">
-              <Button size="lg" variant="secondary" className="rounded-full shadow-lg gap-2 flex-1 md:flex-none">
-                <MessageSquare className="w-5 h-5" /> Contact
-              </Button>
+              <Link href={`/jobs/new?communityId=${provider.communityId}`}>
+                <Button size="lg" variant="secondary" className="rounded-full shadow-lg gap-2 flex-1 md:flex-none">
+                  <MessageSquare className="w-5 h-5" /> Post a Job
+                </Button>
+              </Link>
               <Button size="lg" variant="outline" className={`rounded-full bg-transparent border-primary-foreground/30 hover:bg-primary-foreground/10 ${provider.isFavorite ? 'text-rose-300' : 'text-primary-foreground'}`} onClick={toggleFavorite}>
                 <Heart className={`w-5 h-5 ${provider.isFavorite ? 'fill-current' : ''}`} />
               </Button>
