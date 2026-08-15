@@ -1,7 +1,7 @@
 import { useListProviders, useGetMeta, ListProvidersSort } from '@workspace/api-client-react';
 import { useLocationContext } from '@/context/LocationContext';
 import { useState } from 'react';
-import { Link } from 'wouter';
+import { Link, useSearch } from 'wouter';
 import { Search, Star, ShieldCheck, MapPin, BadgeCheck, Filter, ArrowDownUp } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
@@ -14,11 +14,17 @@ import { Label } from '@/components/ui/label';
 export default function ProvidersList() {
   const { countryId, cityId, communityId } = useLocationContext();
   const { data: meta } = useGetMeta();
-  
+  const searchStr = useSearch();
+  const params = new URLSearchParams(searchStr);
+
   const [search, setSearch] = useState('');
-  const [categoryId, setCategoryId] = useState<number | undefined>();
-  const [verifiedOnly, setVerifiedOnly] = useState(false);
-  const [sort, setSort] = useState<ListProvidersSort>('rating');
+  const [categoryId, setCategoryId] = useState<number | undefined>(
+    params.get('categoryId') ? Number(params.get('categoryId')) : undefined
+  );
+  const [verifiedOnly, setVerifiedOnly] = useState(params.get('verifiedOnly') === 'true');
+  const [sort, setSort] = useState<ListProvidersSort>(
+    (params.get('sort') as ListProvidersSort) || 'value'
+  );
 
   const { data: providers, isLoading } = useListProviders({
     countryId: countryId || undefined,

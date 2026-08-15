@@ -26,7 +26,7 @@ export function Navbar() {
             <Home className="w-5 h-5" />
           </div>
           <span className="font-display font-bold text-xl tracking-tight hidden sm:inline-block">
-            NeighbourWorks
+            Neighbourly
           </span>
         </Link>
 

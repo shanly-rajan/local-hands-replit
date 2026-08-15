@@ -2,7 +2,7 @@ import { CategoryIcon } from "@/components/CategoryIcon";
 import { useListJobs, useGetMeta } from '@workspace/api-client-react';
 import { useLocationContext } from '@/context/LocationContext';
 import { useState } from 'react';
-import { Link } from 'wouter';
+import { Link, useSearch } from 'wouter';
 import { Search, MapPin, Briefcase, PlusCircle, Filter, Clock, Users } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
@@ -14,10 +14,14 @@ import { Label } from '@/components/ui/label';
 export default function JobsList() {
   const { countryId, cityId, currencySymbol } = useLocationContext();
   const { data: meta } = useGetMeta();
-  
+  const searchStr = useSearch();
+  const params = new URLSearchParams(searchStr);
+
   const [search, setSearch] = useState('');
-  const [categoryId, setCategoryId] = useState<number | undefined>();
-  const [status, setStatus] = useState<string>('open');
+  const [categoryId, setCategoryId] = useState<number | undefined>(
+    params.get('categoryId') ? Number(params.get('categoryId')) : undefined
+  );
+  const [status, setStatus] = useState<string>(params.get('status') || 'open');
 
   const { data: jobs, isLoading } = useListJobs({
     countryId: countryId || undefined,
@@ -83,6 +87,7 @@ export default function JobsList() {
                   <SelectContent>
                     <SelectItem value="all">All Statuses</SelectItem>
                     <SelectItem value="open">Open (Seeking Providers)</SelectItem>
+                    <SelectItem value="providers_interested">Providers Interested</SelectItem>
                     <SelectItem value="in_progress">In Progress</SelectItem>
                     <SelectItem value="completed">Completed</SelectItem>
                   </SelectContent>

@@ -10,7 +10,7 @@ export function Footer() {
             <div className="bg-primary text-primary-foreground p-1.5 rounded-lg">
               <Home className="w-4 h-4" />
             </div>
-            <span className="font-display font-bold text-xl">NeighbourWorks</span>
+            <span className="font-display font-bold text-xl">Neighbourly</span>
           </Link>
           <p className="text-secondary-foreground/70 text-sm">
             The customer has choice. The provider has opportunity. The community creates trust.
@@ -48,7 +48,7 @@ export function Footer() {
         </div>
       </div>
       <div className="container mx-auto px-4 mt-12 pt-8 border-t border-secondary-foreground/10 text-center text-sm text-secondary-foreground/50">
-        &copy; {new Date().getFullYear()} NeighbourWorks. A demo community marketplace.
+        &copy; {new Date().getFullYear()} Neighbourly. A demo community marketplace.
       </div>
     </footer>
   );
