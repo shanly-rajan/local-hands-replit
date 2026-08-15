@@ -24,47 +24,57 @@ export default function AdsPage() {
       </div>
 
       {isLoading ? (
-        <div className="grid md:grid-cols-2 gap-8 max-w-5xl mx-auto">
-          {[1,2,3,4].map(i => <div key={i} className="h-64 bg-muted rounded-3xl animate-pulse"></div>)}
+        <div className="grid md:grid-cols-2 gap-6 max-w-5xl mx-auto">
+          {[1,2,3,4].map(i => <div key={i} className="h-72 bg-muted rounded-3xl animate-pulse"></div>)}
         </div>
       ) : ads?.length === 0 ? (
         <div className="text-center py-20 text-muted-foreground">
           No sponsored advertisements available for this region.
         </div>
       ) : (
-        <div className="grid md:grid-cols-2 gap-8 max-w-5xl mx-auto">
-          {ads?.map(ad => (
-            <div key={ad.id} className="group relative rounded-3xl overflow-hidden shadow-lg border hover:border-primary transition-colors bg-card hover-elevate flex flex-col">
-              <div className="aspect-[16/9] relative overflow-hidden bg-muted">
-                <img 
-                  src={ad.imageUrl} 
-                  alt={ad.title} 
-                  className="object-cover w-full h-full group-hover:scale-105 transition-transform duration-700" 
+        <div className="grid md:grid-cols-2 gap-6 max-w-5xl mx-auto">
+          {ads?.map(ad => {
+            const card = (
+              <div key={ad.id} className="group relative rounded-3xl overflow-hidden shadow-lg hover-elevate cursor-pointer aspect-[4/3]">
+                {/* Background image */}
+                <img
+                  src={ad.imageUrl}
+                  alt={ad.title}
+                  className="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
                 />
-                <Badge className="absolute top-4 right-4 bg-black/50 text-white backdrop-blur border-white/20">Sponsored</Badge>
-              </div>
-              <div className="p-6 flex-1 flex flex-col">
-                <div className="flex items-start justify-between gap-4 mb-2">
-                  <h2 className="text-2xl font-bold font-display line-clamp-2">{ad.title}</h2>
-                </div>
-                <div className="font-medium text-primary mb-3">{ad.businessName}</div>
-                <p className="text-muted-foreground mb-6 line-clamp-3">{ad.description}</p>
-                
-                <div className="mt-auto flex items-center justify-between pt-4 border-t">
-                  <div className="flex items-center text-sm text-muted-foreground font-medium">
-                    <MapPin className="w-4 h-4 mr-1" /> {ad.targetArea}
+                {/* Gradient overlay */}
+                <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/30 to-black/10" />
+
+                {/* Content */}
+                <div className="absolute inset-0 flex flex-col justify-between p-6">
+                  <div className="flex justify-end">
+                    <Badge className="bg-black/50 text-white backdrop-blur border-white/20 text-xs">
+                      Sponsored
+                    </Badge>
                   </div>
-                  {ad.linkUrl && (
-                    <a href={ad.linkUrl} target="_blank" rel="noreferrer">
-                      <Button variant="secondary" size="sm" className="rounded-full">
-                        Visit <ExternalLink className="w-3 h-3 ml-2" />
-                      </Button>
-                    </a>
-                  )}
+                  <div className="text-white">
+                    <p className="text-white/70 text-sm font-medium mb-1">{ad.businessName}</p>
+                    <h2 className="font-display font-black text-2xl md:text-3xl leading-tight mb-2">
+                      {ad.title}
+                    </h2>
+                    <div className="flex items-center justify-between gap-4">
+                      <div className="flex items-center text-white/60 text-sm">
+                        <MapPin className="w-3.5 h-3.5 mr-1 shrink-0" /> {ad.targetArea}
+                      </div>
+                      {ad.linkUrl && (
+                        <span className="inline-flex items-center gap-1.5 text-sm font-semibold text-white bg-white/20 hover:bg-white/30 backdrop-blur rounded-full px-4 py-1.5 transition-colors">
+                          Visit <ExternalLink className="w-3 h-3" />
+                        </span>
+                      )}
+                    </div>
+                  </div>
                 </div>
               </div>
-            </div>
-          ))}
+            );
+            return ad.linkUrl
+              ? <a key={ad.id} href={ad.linkUrl} target="_blank" rel="noreferrer">{card}</a>
+              : <div key={ad.id}>{card}</div>;
+          })}
         </div>
       )}
     </div>
