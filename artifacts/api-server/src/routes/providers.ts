@@ -96,6 +96,7 @@ router.get("/providers/:id", async (req, res): Promise<void> => {
     return;
   }
   const ratings = computeRatings(bundle.reviews);
+  const isVerified = bundle.provider.verificationStatus === "verified";
   const payload = {
     ...providerSummary(ctx, bundle),
     description: bundle.provider.description,
@@ -103,6 +104,8 @@ router.get("/providers/:id", async (req, res): Promise<void> => {
     ratingBreakdown: ratings.breakdown,
     reviews: bundle.reviews.map(reviewJson),
     completedJobCount: bundle.reviews.filter((r) => r.verifiedJob).length,
+    contactPhone: isVerified ? bundle.provider.contactPhone : null,
+    contactEmail: isVerified ? bundle.provider.contactEmail : null,
   };
   res.json(GetProviderResponse.parse(payload));
 });

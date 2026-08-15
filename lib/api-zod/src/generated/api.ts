@@ -219,7 +219,9 @@ export const GetProviderResponse = zod.object({
   "overall": zod.int(),
   "providerResponse": zod.string().nullish()
 })),
-  "completedJobCount": zod.int().optional()
+  "completedJobCount": zod.int().optional(),
+  "contactPhone": zod.string().nullish(),
+  "contactEmail": zod.string().nullish()
 }))
 
 

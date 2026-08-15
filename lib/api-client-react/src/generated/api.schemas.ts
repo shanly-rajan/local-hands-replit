@@ -203,13 +203,17 @@ export interface Review {
   providerResponse?: string | null;
 }
 
-export type ProviderDetail = ProviderSummary & {
+export type ProviderDetail = ProviderSummary & ({
   description: string;
   serviceAreas: string[];
   ratingBreakdown: RatingBreakdown;
   reviews: Review[];
   completedJobCount?: number;
-};
+  /** @nullable */
+  contactPhone?: string | null;
+  /** @nullable */
+  contactEmail?: string | null;
+});
 
 export interface ReviewInput {
   /** @minLength 1 */

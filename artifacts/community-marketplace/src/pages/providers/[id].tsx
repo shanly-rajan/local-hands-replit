@@ -3,7 +3,7 @@ import { useGetProvider, useListProviderReviews, useCreateProviderReview, useAdd
 import { useState } from 'react';
 import { useQueryClient } from '@tanstack/react-query';
 import { getGetProviderQueryKey, getListProviderReviewsQueryKey } from '@workspace/api-client-react';
-import { Star, ShieldCheck, MapPin, BadgeCheck, Heart, MessageSquare, Clock, ArrowLeft, Send } from 'lucide-react';
+import { Star, ShieldCheck, MapPin, BadgeCheck, Heart, MessageSquare, Clock, ArrowLeft, Send, Phone, Mail, Lock } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
@@ -84,11 +84,12 @@ export default function ProviderProfile() {
               </div>
             </div>
             <div className="flex gap-3 w-full md:w-auto">
-              <Link href={`/jobs/new?communityId=${provider.communityId}`}>
-                <Button size="lg" variant="secondary" className="rounded-full shadow-lg gap-2 flex-1 md:flex-none">
-                  <MessageSquare className="w-5 h-5" /> Post a Job
-                </Button>
-              </Link>
+              <ContactDialog
+                businessName={provider.businessName}
+                isVerified={provider.verificationStatus === 'verified'}
+                contactPhone={provider.contactPhone ?? null}
+                contactEmail={provider.contactEmail ?? null}
+              />
               <Button size="lg" variant="outline" className={`rounded-full bg-transparent border-primary-foreground/30 hover:bg-primary-foreground/10 ${provider.isFavorite ? 'text-rose-300' : 'text-primary-foreground'}`} onClick={toggleFavorite}>
                 <Heart className={`w-5 h-5 ${provider.isFavorite ? 'fill-current' : ''}`} />
               </Button>
@@ -228,6 +229,81 @@ function RatingBar({ label, value }: { label: string, value: number }) {
         <div className="h-full bg-primary rounded-full" style={{ width: `${percentage}%` }}></div>
       </div>
     </div>
+  );
+}
+
+function ContactDialog({
+  businessName,
+  isVerified,
+  contactPhone,
+  contactEmail,
+}: {
+  businessName: string;
+  isVerified: boolean;
+  contactPhone: string | null;
+  contactEmail: string | null;
+}) {
+  const [open, setOpen] = useState(false);
+  return (
+    <Dialog open={open} onOpenChange={setOpen}>
+      <DialogTrigger asChild>
+        <Button size="lg" variant="secondary" className="rounded-full shadow-lg gap-2 flex-1 md:flex-none">
+          <MessageSquare className="w-5 h-5" /> Contact
+        </Button>
+      </DialogTrigger>
+      <DialogContent className="sm:max-w-sm">
+        <DialogHeader>
+          <DialogTitle className="font-display text-xl">Contact {businessName}</DialogTitle>
+        </DialogHeader>
+        {isVerified && (contactPhone || contactEmail) ? (
+          <div className="space-y-4 py-2">
+            <p className="text-sm text-muted-foreground">This provider is verified. Reach out directly:</p>
+            {contactPhone && (
+              <a
+                href={`tel:${contactPhone.replace(/\s/g, '')}`}
+                className="flex items-center gap-3 p-4 rounded-2xl border bg-card hover:border-primary hover:bg-primary/5 transition-colors group"
+              >
+                <div className="w-10 h-10 rounded-xl bg-primary/10 text-primary flex items-center justify-center group-hover:bg-primary group-hover:text-primary-foreground transition-colors">
+                  <Phone className="w-5 h-5" />
+                </div>
+                <div>
+                  <div className="text-xs text-muted-foreground font-medium uppercase tracking-wide">Phone</div>
+                  <div className="font-bold">{contactPhone}</div>
+                </div>
+              </a>
+            )}
+            {contactEmail && (
+              <a
+                href={`mailto:${contactEmail}`}
+                className="flex items-center gap-3 p-4 rounded-2xl border bg-card hover:border-primary hover:bg-primary/5 transition-colors group"
+              >
+                <div className="w-10 h-10 rounded-xl bg-primary/10 text-primary flex items-center justify-center group-hover:bg-primary group-hover:text-primary-foreground transition-colors">
+                  <Mail className="w-5 h-5" />
+                </div>
+                <div>
+                  <div className="text-xs text-muted-foreground font-medium uppercase tracking-wide">Email</div>
+                  <div className="font-bold">{contactEmail}</div>
+                </div>
+              </a>
+            )}
+          </div>
+        ) : (
+          <div className="py-6 text-center space-y-3">
+            <div className="w-14 h-14 rounded-full bg-muted flex items-center justify-center mx-auto">
+              <Lock className="w-6 h-6 text-muted-foreground" />
+            </div>
+            <p className="font-medium">Contact details not available</p>
+            <p className="text-sm text-muted-foreground">
+              Only verified providers display their contact information.
+              Post a job and let interested providers come to you instead.
+            </p>
+            <Link href="/jobs/new" onClick={() => setOpen(false)}>
+              <Button className="rounded-full mt-2">Post a Job</Button>
+            </Link>
+          </div>
+        )}
+      </DialogContent>
+    </Dialog>
   );
 }
 

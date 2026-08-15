@@ -9,10 +9,14 @@ import type { ProviderSummary } from './providerSummary';
 import type { RatingBreakdown } from './ratingBreakdown';
 import type { Review } from './review';
 
-export type ProviderDetail = ProviderSummary & {
+export type ProviderDetail = ProviderSummary & ({
   description: string;
   serviceAreas: string[];
   ratingBreakdown: RatingBreakdown;
   reviews: Review[];
   completedJobCount?: number;
-};
+  /** @nullable */
+  contactPhone?: string | null;
+  /** @nullable */
+  contactEmail?: string | null;
+});

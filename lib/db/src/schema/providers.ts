@@ -22,6 +22,8 @@ export const providersTable = pgTable("providers", {
   priceIndicator: text("price_indicator"),
   yearsActive: integer("years_active"),
   serviceAreas: text("service_areas").array().notNull().default([]),
+  contactPhone: text("contact_phone"),
+  contactEmail: text("contact_email"),
   createdAt: timestamp("created_at", { withTimezone: true }).notNull().defaultNow(),
 });
 

@@ -538,6 +538,8 @@ components:
               items:
                 $ref: "#/components/schemas/Review"
             completedJobCount: { type: integer }
+            contactPhone: { type: ["string", "null"] }
+            contactEmail: { type: ["string", "null"] }
     RatingBreakdown:
       type: object
       required: [quality, price, reliability, professionalism, overall]
