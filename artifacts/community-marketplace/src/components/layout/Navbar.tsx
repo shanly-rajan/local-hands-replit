@@ -25,7 +25,7 @@ export function Navbar() {
           <div className="bg-primary text-primary-foreground p-2 rounded-xl group-hover:scale-105 transition-transform">
             <Home className="w-5 h-5" />
           </div>
-          <span className="font-display font-bold text-xl tracking-tight hidden sm:inline-block">
+          <span className="font-display font-bold text-xl tracking-tight">
             Neighbourly
           </span>
         </Link>
