@@ -93,10 +93,10 @@ export function Navbar() {
               <Heart className="w-5 h-5" />
             </Button>
           </Link>
-          <Link href="/jobs/new">
+          <Link href="/jobs/new" className="hidden sm:block">
             <Button className="rounded-full shadow-sm">
               <PlusCircle className="w-4 h-4 mr-2" />
-              <span>Post a Job</span>
+              Post a Job
             </Button>
           </Link>
         </nav>
