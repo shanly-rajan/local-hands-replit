@@ -1,0 +1,1167 @@
+# Build a Community Services Marketplace
+
+Build a modern, secure, community-friendly web application that connects local residents with trusted service providers.
+
+The application should support **two complementary ways of finding help**:
+
+1. Customers can search for and choose service providers.
+2. Customers can post a problem together with their budget, allowing interested providers to express interest in doing the work.
+
+This second model is important because it gives customers more control instead of making them completely dependent on provider pricing.
+
+The application must make it easy to answer questions such as:
+
+* Who is a reliable plumber nearby?
+* Which electrician has been recommended by people in my community?
+* Who offers good quality work at a fair price?
+* Is this provider verified?
+* What have previous customers experienced?
+* Who offers the best overall value?
+* Who is interested in doing my job within my budget?
+* What services or businesses are advertising in my community?
+
+The overall principle should be:
+
+> **Trust, choice and value for the customer.**
+
+---
+
+# 1. Core Product Vision
+
+Create a community services marketplace where residents can discover trusted providers or openly post work they need completed.
+
+The platform should create a healthy balance between:
+
+**Provider-led discovery**
+
+> "I need a plumber. Show me trusted plumbers nearby."
+
+and:
+
+**Customer-led job discovery**
+
+> "My kitchen tap is leaking. My budget is R600. Who is interested in doing the job?"
+
+This gives customers more purchasing power while giving local service providers access to genuine job opportunities.
+
+---
+
+# 2. User Types
+
+Support three primary roles.
+
+## Client / Community Member
+
+Clients should be able to:
+
+* Register and log in.
+* Manage their profile.
+* Search for services.
+* Browse providers.
+* View provider verification.
+* Compare providers.
+* Save favourite providers.
+* Contact providers.
+* Post jobs.
+* Specify an indicative budget.
+* Add photos of the problem.
+* Receive interest from providers.
+* Compare interested providers.
+* Select a provider.
+* Rate providers after work has been completed.
+* Write reviews.
+* Report fraudulent or inappropriate behaviour.
+* Browse community advertisements.
+
+---
+
+## Service Provider
+
+A provider may be:
+
+* An individual.
+* Sole trader.
+* Small business.
+* Registered company.
+
+Providers should be able to:
+
+* Register.
+* Create a provider profile.
+* Select service categories.
+* Define service areas.
+* Complete identity/business verification.
+* Upload photographs of previous work.
+* Specify pricing information where appropriate.
+* Search available community jobs.
+* Filter jobs by category and location.
+* View customer budgets.
+* Express interest in jobs.
+* Send a short message to the customer.
+* Indicate whether they can work within the proposed budget.
+* Provide an alternative estimate where necessary.
+* Receive customer reviews.
+* Respond to reviews.
+* Manage their availability.
+
+---
+
+# 3. Customer Job Marketplace
+
+Create a major feature called:
+
+## Community Jobs
+
+Customers should be able to post work they need completed.
+
+Example:
+
+> **Need a plumber**
+>
+> Kitchen sink is leaking underneath the basin.
+>
+> **Budget: R600**
+>
+> Location: Randburg
+>
+> Preferred date: Saturday
+>
+> 2 photos attached
+
+A job should contain:
+
+* Job title.
+* Service category.
+* Problem description.
+* Location/community.
+* Customer budget.
+* Currency.
+* Preferred date.
+* Urgency.
+* Optional photographs.
+* Date posted.
+* Job status.
+
+Example urgency values:
+
+* Flexible
+* Soon
+* Urgent
+* Emergency
+
+---
+
+# 4. Budget Model
+
+Allow the customer to specify:
+
+### Fixed Budget
+
+Example:
+
+**Budget: R600**
+
+or:
+
+### Budget Range
+
+Example:
+
+**Budget: R500 – R800**
+
+or:
+
+### Open to Quotes
+
+The customer does not yet know what the service should cost.
+
+Clearly explain that budgets are generally **indicative until the provider understands the scope of work**.
+
+Do not force providers to accept unrealistic budgets.
+
+A provider should be able to respond:
+
+> I'm interested and can work within your R600 budget.
+
+or:
+
+> I'm interested, but based on the description I estimate R750–R900. I would need to inspect the problem first.
+
+This keeps customers empowered without encouraging misleading pricing.
+
+---
+
+# 5. Provider Expressions of Interest
+
+Providers should not automatically receive a job.
+
+Instead, they should **express interest**.
+
+Each expression of interest should contain:
+
+* Provider.
+* Verification status.
+* Overall rating.
+* Community Value Score.
+* Number of reviews.
+* Short message.
+* Proposed price or price range.
+* Whether the customer's budget can be met.
+* Estimated availability.
+* Date submitted.
+
+Example:
+
+> **Thabo Plumbing Services**
+>
+> ✓ Verified
+>
+> ⭐ 4.8 from 67 reviews
+>
+> Community Value Score: 91/100
+>
+> "I can assist Saturday morning and the R600 budget should be sufficient assuming no replacement pipes are required."
+>
+> **Interested**
+
+---
+
+# 6. Customer Provider Selection
+
+Once providers express interest, the customer should see a comparison screen.
+
+For example:
+
+| Provider          | Verified | Rating | Reviews | Value Score | Customer Budget | Provider Estimate |
+| ----------------- | -------- | -----: | ------: | ----------: | --------------: | ----------------: |
+| Thabo Plumbing    | ✓        |    4.8 |      67 |          91 |            R600 |              R600 |
+| QuickFix Plumbing | ✓        |    4.6 |     121 |          89 |            R600 |         R550–R700 |
+| Joe Handyman      | ✓        |    4.9 |      14 |          84 |            R600 |              R600 |
+
+Allow the customer to open each provider's profile before selecting them.
+
+The customer should retain control over who receives the work.
+
+Do not automatically award jobs based purely on the lowest price.
+
+---
+
+# 7. Job Status Workflow
+
+Jobs should have statuses such as:
+
+```text
+DRAFT
+    ↓
+OPEN
+    ↓
+PROVIDERS_INTERESTED
+    ↓
+PROVIDER_SELECTED
+    ↓
+IN_PROGRESS
+    ↓
+COMPLETED
+    ↓
+REVIEWED
+```
+
+Also support:
+
+```text
+CANCELLED
+EXPIRED
+DISPUTED
+```
+
+Only customers should be able to select which provider gets the job.
+
+---
+
+# 8. Privacy of Customer Job Posts
+
+Community jobs should protect customer privacy.
+
+Public job listings may show:
+
+* Approximate area/community.
+* Job description.
+* Service category.
+* Budget.
+* Photos selected by the customer.
+
+Do **not** publicly expose:
+
+* Exact home address.
+* Personal phone number.
+* Personal email address.
+* Sensitive customer information.
+
+Exact contact/address information should only become available when appropriate in the service interaction.
+
+---
+
+# 9. Service Categories
+
+Create a flexible administrator-managed category structure.
+
+Seed categories including:
+
+### Home Maintenance
+
+* Plumbing
+* Electrical
+* Handyman
+* Painting
+* Roofing
+* Tiling
+* Carpentry
+* Building
+* Renovations
+* Waterproofing
+* Paving
+* Flooring
+* Ceiling installation
+* Locksmith
+* Glass repair
+* Appliance repair
+* Air conditioning
+* Pool maintenance
+* Irrigation
+
+### Home & Garden
+
+* Gardening
+* Landscaping
+* Tree cutting
+* Lawn maintenance
+* Garden waste removal
+* Pest control
+* General cleaning
+* Deep cleaning
+* Window cleaning
+* Carpet cleaning
+
+### Household Assistance
+
+* Domestic helper
+* House sitter
+* Pet sitter
+* Dog walker
+* Babysitter
+* Child minder
+* Elderly assistance
+* Caregiver
+
+### Automotive
+
+* Mechanic
+* Mobile mechanic
+* Auto electrician
+* Car wash
+* Vehicle detailing
+* Tyre services
+* Towing
+
+### Moving & Transport
+
+* Furniture transport
+* Household moving
+* Courier
+* Local delivery
+* Waste removal
+
+### Professional Services
+
+* Accountant
+* Bookkeeper
+* Tax consultant
+* Legal services
+* IT support
+* Computer repair
+* Graphic designer
+* Photographer
+* Tutor
+* Translator
+
+### Events
+
+* Catering
+* Baking
+* Event planning
+* DJ
+* Photography
+* Videography
+* Decorations
+* Tent hire
+* Chair and table hire
+
+### Personal Services
+
+* Hairdresser
+* Barber
+* Beauty services
+* Nail technician
+* Massage
+* Personal trainer
+
+Administrators must be able to add new categories without requiring code changes.
+
+---
+
+# 10. Geographic Community Model
+
+Design the application for international use.
+
+Use a hierarchical geographic model similar to:
+
+```text
+Country
+    ↓
+State / Province
+    ↓
+City / Town
+    ↓
+Suburb / Neighbourhood / Community
+```
+
+Do not hard-code South African terminology into the application.
+
+For example:
+
+### South Africa
+
+```text
+South Africa
+└── Gauteng
+    └── Johannesburg
+        ├── Randburg
+        ├── Sandton
+        ├── Fourways
+        └── Roodepoort
+```
+
+### United States
+
+```text
+United States
+└── Texas
+    └── Austin
+        ├── Downtown Austin
+        ├── North Austin
+        └── South Congress
+```
+
+### India
+
+```text
+India
+└── Karnataka
+    └── Bengaluru
+        ├── Whitefield
+        ├── Indiranagar
+        └── Koramangala
+```
+
+Users should be able to search within:
+
+* Their neighbourhood.
+* Their city.
+* Nearby communities.
+* A configurable geographic radius.
+
+---
+
+# 11. Internationalisation
+
+Seed and design the application around three initial countries:
+
+* 🇿🇦 South Africa
+* 🇺🇸 United States
+* 🇮🇳 India
+
+Support country-specific currencies:
+
+```text
+South Africa → ZAR / R
+United States → USD / $
+India → INR / ₹
+```
+
+Currency must belong to the job or provider's geographic market and should never be globally hard-coded.
+
+Structure the system so additional countries and currencies can be added later.
+
+---
+
+# 12. Provider Verification
+
+Verification is a core trust mechanism.
+
+Support verification for both individuals and companies.
+
+Verification statuses:
+
+```text
+NOT_VERIFIED
+PENDING
+VERIFIED
+REJECTED
+SUSPENDED
+```
+
+Verification information may include:
+
+### Individual
+
+* Full name.
+* Mobile number.
+* Email.
+* Identity document.
+* Proof of address.
+* Professional certification where appropriate.
+
+### Company
+
+* Company name.
+* Registration number.
+* Contact person.
+* Business documentation.
+* Address.
+* Relevant professional/trade certificates.
+
+Verification requirements may differ by country.
+
+Design verification using configurable rules rather than assuming every country uses identical documentation.
+
+Display:
+
+**✓ Verified Provider**
+
+on approved providers.
+
+Verification documents must never be publicly accessible.
+
+---
+
+# 13. Reviews and Ratings
+
+Only authenticated users should be able to review providers.
+
+Where possible, prioritise reviews associated with an actual completed job.
+
+Allow ratings for:
+
+* Quality of work.
+* Price fairness.
+* Reliability.
+* Professionalism.
+* Overall experience.
+
+Each should use a 1–5 rating.
+
+Allow written reviews.
+
+Allow providers to respond.
+
+Distinguish reviews linked to a completed job with a badge such as:
+
+**✓ Verified Job**
+
+This gives those reviews greater credibility.
+
+---
+
+# 14. Community Value Score
+
+Create a **Community Value Score from 0–100**.
+
+The score should help users understand which providers offer strong overall value.
+
+Consider:
+
+* Quality: 30%
+* Overall customer rating: 25%
+* Price fairness: 20%
+* Reliability: 15%
+* Professionalism: 10%
+
+Also incorporate review confidence.
+
+For example:
+
+```text
+Provider A
+4.9 stars
+3 reviews
+
+Provider B
+4.7 stars
+184 reviews
+```
+
+Provider B may deserve a stronger ranking because the rating is supported by considerably more evidence.
+
+Do not allow a single five-star review to dominate the rankings.
+
+Show:
+
+> **Community Value Score: 91/100**
+
+and provide a simple explanation:
+
+> Excellent work quality, consistently strong reviews and fair pricing.
+
+The scoring engine should remain modular so weighting can be adjusted later.
+
+---
+
+# 15. Community Advertising
+
+Provide advertising areas for:
+
+* Local businesses.
+* Restaurants.
+* Shops.
+* Schools.
+* Tutors.
+* Property businesses.
+* Community events.
+* Service providers.
+* Local promotions.
+
+Advertisements should support:
+
+* Advertiser.
+* Business name.
+* Image/banner.
+* Description.
+* Destination URL/contact.
+* Target country.
+* Target city.
+* Target community.
+* Start date.
+* End date.
+* Status.
+
+Clearly label advertising:
+
+**Sponsored**
+
+Advertising must not overpower the service marketplace.
+
+Avoid intrusive popups.
+
+---
+
+# 16. Community Safety
+
+Allow users to report:
+
+* Fraud.
+* Poor workmanship.
+* Safety concerns.
+* Harassment.
+* Fake providers.
+* Fake reviews.
+* Misleading advertising.
+* No-show providers.
+* Inappropriate behaviour.
+
+Administrators should have a moderation queue.
+
+Maintain audit logs of important moderation actions.
+
+---
+
+# 17. Security
+
+Security is a major requirement.
+
+Implement:
+
+* Secure authentication.
+* Strong password hashing.
+* Password reset.
+* Email verification.
+* Role-based access control.
+* Server-side authorisation.
+* Input validation.
+* CSRF protection where applicable.
+* XSS protection.
+* SQL injection protection.
+* Rate limiting.
+* Secure file uploads.
+* File type validation.
+* File size validation.
+* Secure verification-document storage.
+* Secure session management.
+* Audit logging.
+* Environment variables for secrets.
+
+Never expose:
+
+* Passwords.
+* API keys.
+* Authentication tokens.
+* Identity documents.
+* Exact customer addresses.
+* Private contact information.
+
+Follow privacy-by-design principles.
+
+---
+
+# 18. Accessibility and Ease of Use
+
+Ease of use is extremely important.
+
+The application must work well for:
+
+* Younger users.
+* Adults.
+* Elderly users.
+* Users with limited technical experience.
+
+Use:
+
+* Large readable text.
+* High contrast.
+* Large buttons.
+* Touch-friendly interfaces.
+* Clear labels.
+* Simple language.
+* Icons accompanied by text.
+* Minimal navigation levels.
+* Clear success/error messages.
+
+Avoid clutter.
+
+The most important homepage actions should be immediately visible:
+
+**Find a Service**
+
+**Post a Job**
+
+**List Your Service**
+
+---
+
+# 19. Homepage
+
+Primary heading:
+
+# Trusted local services. Recommended by your community.
+
+Provide a prominent search box:
+
+> **What service do you need?**
+
+Example:
+
+> Plumber, electrician, cleaner...
+
+Below it provide:
+
+### Need someone for a specific job?
+
+**Post your problem and budget and let trusted local providers come to you.**
+
+CTA:
+
+**Post a Job**
+
+Show:
+
+* Popular categories.
+* Verified providers.
+* Highest-rated providers.
+* Best-value providers.
+* Recently posted jobs.
+* Community advertisements.
+* How the service works.
+
+---
+
+# 20. Recommended Pages
+
+Create:
+
+* Homepage.
+* Registration.
+* Login.
+* Forgot Password.
+* Client Dashboard.
+* Provider Registration.
+* Provider Verification.
+* Provider Dashboard.
+* Browse Services.
+* Search Results.
+* Provider Profile.
+* Post a Job.
+* Community Jobs.
+* Job Detail.
+* Express Interest.
+* Compare Interested Providers.
+* My Posted Jobs.
+* Provider Job Opportunities.
+* Submit Review.
+* Community Advertisements.
+* User Profile.
+* Saved Providers.
+* Reports & Safety.
+* Admin Dashboard.
+* Admin Verification Queue.
+* Admin Moderation Queue.
+* Admin Advertisement Management.
+
+---
+
+# 21. Suggested Domain Model
+
+Consider entities such as:
+
+```text
+User
+ClientProfile
+ProviderProfile
+Company
+
+Country
+Region
+City
+Community
+
+ServiceCategory
+ProviderService
+
+ProviderVerification
+VerificationDocument
+
+Job
+JobAttachment
+JobBudget
+JobInterest
+JobAssignment
+
+ServiceInteraction
+
+Review
+ReviewRating
+ProviderValueScore
+
+FavouriteProvider
+
+Advertisement
+AdvertisementCampaign
+
+Report
+AuditLog
+Notification
+```
+
+Keep responsibilities separate.
+
+Do not create giant database models or large application files that contain unrelated functionality.
+
+---
+
+# 22. Technical Architecture
+
+Choose a stack appropriate for Replit deployment.
+
+Prefer:
+
+## Backend
+
+Python using:
+
+* FastAPI, or
+* Flask.
+
+Choose the framework that gives the cleanest maintainable solution.
+
+## Frontend
+
+Prefer a lightweight frontend.
+
+Use:
+
+* Server-rendered templates.
+* Bootstrap or Tailwind.
+* Minimal JavaScript where appropriate.
+
+Avoid introducing React unless the additional complexity genuinely benefits the application.
+
+## Database
+
+Use PostgreSQL.
+
+SQLite may be used for local experimentation, but the production architecture should assume PostgreSQL.
+
+Use an ORM.
+
+---
+
+# 23. Architecture
+
+Apply:
+
+* SOLID principles.
+* Separation of concerns.
+* Clear domain boundaries.
+* Type hints.
+* Validation.
+* Logging.
+* Clean exception handling.
+* Modular services.
+* Automated testing.
+
+Prefer a structure similar to:
+
+```text
+app/
+    auth/
+    users/
+    geography/
+    providers/
+    verification/
+    services/
+    jobs/
+    reviews/
+    scoring/
+    advertisements/
+    community/
+    moderation/
+    admin/
+    security/
+```
+
+Avoid unnecessary abstraction or enterprise-level complexity.
+
+---
+
+# 24. Seed Data
+
+Create realistic seed data spanning:
+
+## 🇿🇦 South Africa
+
+Use examples from:
+
+* Johannesburg
+* Pretoria
+* Cape Town
+* Durban
+
+Include communities/suburbs such as:
+
+* Sandton
+* Randburg
+* Fourways
+* Soweto
+* Centurion
+* Umhlanga
+
+Use **ZAR** pricing.
+
+Example job:
+
+> **Need a plumber**
+>
+> Kitchen sink leaking.
+>
+> Sandton, Johannesburg
+>
+> Budget: **R600**
+
+---
+
+## 🇺🇸 United States
+
+Use examples from cities such as:
+
+* Austin
+* Dallas
+* New York
+* Atlanta
+* Chicago
+
+Use **USD** pricing.
+
+Example job:
+
+> **Need someone to repair a fence**
+>
+> Two wooden fence panels damaged.
+>
+> Austin, Texas
+>
+> Budget: **$250**
+
+---
+
+## 🇮🇳 India
+
+Use examples from:
+
+* Bengaluru
+* Mumbai
+* Delhi
+* Hyderabad
+* Chennai
+
+Use **INR** pricing.
+
+Example job:
+
+> **Need an electrician**
+>
+> Two power sockets have stopped working.
+>
+> Bengaluru, Karnataka
+>
+> Budget: **₹1,500**
+
+---
+
+Create at least:
+
+* 3 countries.
+* 10+ cities.
+* 20+ communities.
+* 25+ service categories.
+* 40+ service providers.
+* Individual providers.
+* Companies.
+* Verified providers.
+* Unverified providers.
+* 50+ reviews.
+* 20+ open community jobs.
+* Provider expressions of interest.
+* Completed jobs.
+* Several community advertisements.
+
+Names, prices, locations and descriptions should look realistic for each country.
+
+Avoid making the application feel like it contains generic placeholder data.
+
+---
+
+# 25. Testing
+
+Create tests covering:
+
+* User registration.
+* Authentication.
+* Permissions.
+* Provider registration.
+* Provider verification.
+* Job creation.
+* Job budget validation.
+* Job visibility.
+* Provider interest.
+* Provider selection.
+* Job status transitions.
+* Review creation.
+* Verified job reviews.
+* Community Value Score.
+* Search.
+* Filtering.
+* Advertisement visibility.
+* Admin permissions.
+* Private document access.
+* Customer privacy.
+* Cross-country currency handling.
+
+---
+
+# 26. MVP Priorities
+
+Build in this order:
+
+1. Authentication.
+2. Users and roles.
+3. Countries, cities and communities.
+4. Service categories.
+5. Provider registration.
+6. Provider verification.
+7. Provider profiles.
+8. Provider search.
+9. Customer job posting.
+10. Budget functionality.
+11. Provider expressions of interest.
+12. Customer provider selection.
+13. Job lifecycle.
+14. Reviews and ratings.
+15. Community Value Score.
+16. Community advertising.
+17. Moderation.
+18. Security hardening.
+19. Automated tests.
+20. UI refinement.
+
+---
+
+# 27. Future Capabilities
+
+Architect for, but do not necessarily implement in the MVP:
+
+* Provider quotes.
+* In-app negotiation.
+* Appointment scheduling.
+* Real-time messaging.
+* WhatsApp integration.
+* Payments.
+* Deposits.
+* Escrow.
+* Provider subscriptions.
+* Promoted providers.
+* Promoted job responses.
+* SMS.
+* Push notifications.
+* Emergency requests.
+* Map-based search.
+* GPS proximity.
+* AI recommendations.
+* AI job categorisation.
+* AI review summaries.
+* Fraud detection.
+* Background checks.
+* Dispute resolution.
+* Multi-language support.
+* Native mobile applications.
+
+---
+
+# 28. Product Philosophy
+
+The application should not simply be another business directory.
+
+It should create a **two-sided community marketplace**.
+
+Customers can say:
+
+> "Show me a trusted electrician."
+
+or:
+
+> "I need these lights installed and I have R800 available. Who can help?"
+
+Providers can say:
+
+> "There are three electrical jobs available near me today."
+
+The platform should facilitate the connection while using **verification, reputation, transparency and community feedback** to create trust.
+
+The design philosophy is:
+
+> **The customer has choice.
+> The provider has opportunity.
+> The community creates trust.**
+
+The application should feel local, safe, inclusive and extremely easy to use.
+
+Think:
+
+> **"My neighbourhood knows who does good work, and now I can find them."**

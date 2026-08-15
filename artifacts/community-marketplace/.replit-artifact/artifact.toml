@@ -1,0 +1,28 @@
+kind = "web"
+previewPath = "/"
+title = "Community Services Marketplace"
+description = "A two-sided community services marketplace where residents discover trusted, verified local service providers or post jobs with budgets and let interested providers come to them. Includes provider profiles with reviews and a Community Value Score, job posting with expressions of interest and comparison, and community advertisements, across South Africa, the US, and India."
+version = "1.0.0"
+id = "artifacts/community-marketplace"
+router = "path"
+
+[[services]]
+name = "web"
+paths = [ "/" ]
+localPort = 18103
+
+[services.development]
+run = "pnpm --filter @workspace/community-marketplace run dev"
+
+[services.production]
+build = [ "pnpm", "--filter", "@workspace/community-marketplace", "run", "build" ]
+serve = "static"
+publicDir = "artifacts/community-marketplace/dist/public"
+
+[[services.production.rewrites]]
+from = "/*"
+to = "/index.html"
+
+[services.env]
+PORT = "18103"
+BASE_PATH = "/"

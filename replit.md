@@ -1,45 +1,19 @@
-# [Project name]
+# NeighbourWorks — Community Services Marketplace
 
-_Replace the heading above with the project's name, and this line with one sentence describing what this app does for users._
+A two-sided marketplace connecting residents with trusted local service providers across South Africa (ZAR), the United States (USD), and India (INR).
 
-## Run & Operate
+## Overview
+- **Frontend**: React + Vite at `artifacts/community-marketplace` (wouter routes: /, /providers, /providers/:id, /jobs, /jobs/new, /jobs/:id, /saved, /ads). Design: "Saffron & Indigo" — Outfit + DM Sans typography.
+- **Backend**: Shared Express api-server at `artifacts/api-server` (`/api` base). Routes: meta, home, providers, reviews, jobs, interests, select, status, ads, favorites.
+- **DB**: PostgreSQL + Drizzle, schema in `lib/db/src/schema/` (geo, categories, providers, jobs, ads).
+- **API contract**: `lib/api-spec/openapi.yaml` → Orval codegen (zod + react-query hooks).
+- **Seed data**: `scripts/src/seed-marketplace.ts` (idempotent; 38 providers, ~195 reviews, 27 jobs, 22 interests, 7 ads across 3 countries).
 
-- `pnpm --filter @workspace/api-server run dev` — run the API server (port 5000)
-- `pnpm run typecheck` — full typecheck across all packages
-- `pnpm run build` — typecheck + build all packages
-- `pnpm --filter @workspace/api-spec run codegen` — regenerate API hooks and Zod schemas from the OpenAPI spec
-- `pnpm --filter @workspace/db run push` — push DB schema changes (dev only)
-- Required env: `DATABASE_URL` — Postgres connection string
-
-## Stack
-
-- pnpm workspaces, Node.js 24, TypeScript 5.9
-- API: Express 5
-- DB: PostgreSQL + Drizzle ORM
-- Validation: Zod (`zod/v4`), `drizzle-zod`
-- API codegen: Orval (from OpenAPI spec)
-- Build: esbuild (CJS bundle)
-
-## Where things live
-
-_Populate as you build — short repo map plus pointers to the source-of-truth file for DB schema, API contracts, theme files, etc._
-
-## Architecture decisions
-
-_Populate as you build — non-obvious choices a reader couldn't infer from the code (3-5 bullets)._
-
-## Product
-
-_Describe the high-level user-facing capabilities of this app once they exist._
+## Key domain logic
+- **Community Value Score (0-100)**: weighted rating composite (quality 30%, overall 25%, price 20%, reliability 15%, professionalism 10%) shrunk toward neutral with confidence n/(n+4). Computed server-side in `artifacts/api-server/src/lib/marketplace.ts`.
+- **Job lifecycle**: open → providers_interested → provider_selected → in_progress → completed → reviewed (plus cancelled/expired/disputed). Transitions enforced in `routes/jobs.ts`.
+- **No auth yet**: demo mode — jobs created via UI get `isMine: true`; favorites are global. Auth is a planned follow-up.
+- Currency always rendered per-item via `currencySymbol` from the item's country.
 
 ## User preferences
-
-_Populate as you build — explicit user instructions worth remembering across sessions._
-
-## Gotchas
-
-_Populate as you build — sharp edges, "always run X before Y" rules._
-
-## Pointers
-
-- See the `pnpm-workspace` skill for workspace structure, TypeScript setup, and package details
+(none recorded yet)

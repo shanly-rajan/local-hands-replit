@@ -1,0 +1,1 @@
+- [Orval zod v4 import fix](orval-zod-v4.md) — Orval emits `from 'zod'` but needs `zod/v4`; codegen script has a sed rewrite step that must be preserved.
