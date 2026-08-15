@@ -4,7 +4,7 @@ import { useGetJob, useUpdateJobStatus, useCreateJobInterest, useSelectJobProvid
 import { useState } from 'react';
 import { useQueryClient } from '@tanstack/react-query';
 import { useLocationContext } from '@/context/LocationContext';
-import { MapPin, Briefcase, DollarSign, Calendar, Clock, ArrowLeft, ShieldCheck, CheckCircle2, User, Star, BadgeCheck, MessageSquare } from 'lucide-react';
+import { MapPin, Briefcase, Banknote, Calendar, Clock, ArrowLeft, ShieldCheck, CheckCircle2, User, Star, BadgeCheck, MessageSquare } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardHeader, CardTitle, CardDescription, CardFooter } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
@@ -85,7 +85,7 @@ export default function JobDetail() {
                         <MapPin className="w-4 h-4 mr-1 text-primary" /> {job.communityName}, {job.cityName}
                       </span>
                       <span className="flex items-center text-foreground bg-accent px-2 py-1 rounded">
-                        <DollarSign className="w-4 h-4 mr-1 text-primary" />
+                        <Banknote className="w-4 h-4 mr-1 text-primary" />
                         {job.budgetType === 'fixed' ? `${job.currencySymbol}${job.budgetMin}` : 
                          job.budgetType === 'range' ? `${job.currencySymbol}${job.budgetMin} - ${job.currencySymbol}${job.budgetMax}` : 
                          'Open to quotes'}

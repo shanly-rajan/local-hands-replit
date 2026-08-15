@@ -5,7 +5,7 @@ import { useLocationContext } from '@/context/LocationContext';
 import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import * as z from 'zod';
-import { MapPin, Briefcase, DollarSign, Calendar, Info } from 'lucide-react';
+import { MapPin, Briefcase, Banknote, Calendar, Info } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from '@/components/ui/card';
 import { Form, FormControl, FormDescription, FormField, FormItem, FormLabel, FormMessage } from '@/components/ui/form';
@@ -148,7 +148,7 @@ export default function PostJob() {
 
           <Card className="shadow-md border-border/50">
             <CardHeader>
-              <CardTitle className="flex items-center gap-2 font-display text-2xl"><DollarSign className="w-5 h-5 text-primary" /> Budget & Timing</CardTitle>
+              <CardTitle className="flex items-center gap-2 font-display text-2xl"><Banknote className="w-5 h-5 text-primary" /> Budget & Timing</CardTitle>
             </CardHeader>
             <CardContent className="space-y-6">
               
