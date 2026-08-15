@@ -49,16 +49,7 @@ Supports **South Africa (ZAR)**, **USA (USD)**, and **India (INR)** with locatio
 
 ## Architecture
 
-```
-artifacts/
-  community-marketplace/   # React + Vite frontend (port $PORT, path /)
-  api-server/              # Express API (port 8080, prefix /api)
-
-lib/
-  db/                      # Drizzle schema, migrations, seed data
-  api-spec/                # openapi.yaml + Orval codegen script
-  api-client-react/        # Generated Zod types + React Query hooks
-```
+![Local Hands architecture diagram](docs/architecture.png)
 
 The OpenAPI YAML is the single source of truth. Running `pnpm codegen` in `lib/api-spec` regenerates all Zod schemas and React Query hooks from the spec — keeping the frontend and backend in sync automatically.
 
