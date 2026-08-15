@@ -107,7 +107,7 @@ router.get("/providers/:id", async (req, res): Promise<void> => {
     contactPhone: isVerified ? bundle.provider.contactPhone : null,
     contactEmail: isVerified ? bundle.provider.contactEmail : null,
   };
-  res.json(GetProviderResponse.parse(payload));
+  res.json(payload);
 });
 
 router.get("/providers/:id/reviews", async (req, res): Promise<void> => {
