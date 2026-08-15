@@ -1,9 +1,9 @@
 import { Link } from 'wouter';
 import { Heart, Home } from 'lucide-react';
 
-export function Footer() {
+export function Footer({ className }: { className?: string }) {
   return (
-    <footer className="bg-secondary text-secondary-foreground py-12 mt-auto">
+    <footer className={`bg-secondary text-secondary-foreground py-12 mt-auto ${className ?? ''}`}>
       <div className="container mx-auto px-4 grid grid-cols-1 md:grid-cols-4 gap-8">
         <div className="md:col-span-1">
           <Link href="/" className="flex items-center gap-2 mb-4">
